@@ -11,16 +11,10 @@ import matplotlib.patches as patches
 
 import argparse
 
-def visualize(image, boxes, labels):
-    # If image is a url
-    if image.startswith('http'):
-        response = requests.get(image)
-        img = Image.open(BytesIO(response.content))
-        img = np.array(img)
-    else:
-        img = cv2.imread(image)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+from utils import load_im
 
+def visualize(image_path, boxes, labels):
+    img = load_im(image_path)
     fig, ax = plt.subplots(1, 1, figsize=(10, 10))
     ax.imshow(img)
 

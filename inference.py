@@ -1,24 +1,23 @@
-import requests
-from PIL import Image
 import torch
 
 from transformers import OwlViTProcessor, OwlViTForObjectDetection
 
 import argparse
+from utils import load_im
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='infer bounding boxes and classes based on image and text array')
-    parser.add_argument('image', type=str, help='Image url or file path')
+    parser.add_argument('image_location', type=str, help='Image url or file path')
     parser.add_argument('texts', type=str, help='Text array')
     args = parser.parse_args()
 
     processor = OwlViTProcessor.from_pretrained("google/owlvit-base-patch32")
     model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
 
-    url = "http://images.cocodataset.org/val2017/000000039769.jpg"
-    image = Image.open(requests.get(url, stream=True).raw)
-    texts = [["a photo of a cat", "a photo of a dog"]]
+    image = load_im(args.image_location)
+    texts = [args.texts.split(':')]
+
     inputs = processor(text=texts, images=image, return_tensors="pt")
     outputs = model(**inputs)
 

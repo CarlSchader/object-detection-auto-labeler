@@ -1,4 +1,5 @@
 import torch
+import json
 
 from transformers import OwlViTProcessor, OwlViTForObjectDetection
 
@@ -10,6 +11,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='infer bounding boxes and classes based on image and text array')
     parser.add_argument('image_location', type=str, help='Image url or file path')
     parser.add_argument('texts', type=str, help='Text array')
+    parser.add_argument('--output', '-o', type=str, help='Output file path', default=None)
     args = parser.parse_args()
 
     processor = OwlViTProcessor.from_pretrained("google/owlvit-base-patch32")
@@ -34,3 +36,11 @@ if __name__ == "__main__":
     for box, score, label in zip(boxes, scores, labels):
         box = [round(i, 2) for i in box.tolist()]
         print(f"Detected {text[label]} with confidence {round(score.item(), 3)} at location {box}")
+    
+    if args.output is not None:
+        json_array = []
+        # Print detected objects and rescaled box coordinates
+        for box, score, label in zip(boxes, scores, labels):
+            box = [round(i, 2) for i in box.tolist()]
+            json_array.append({"label": text[label], "confidence": round(score.item(), 3), "location": box})
+        json.dump(json_array, open(args.output, "w"), indent=2)

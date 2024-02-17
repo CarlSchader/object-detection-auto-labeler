@@ -1,0 +1,112 @@
+[
+  {
+    "label": "person",
+    "confidence": 0.153,
+    "location": [
+      1406.47,
+      775.77,
+      1615.42,
+      1618.62
+    ]
+  },
+  {
+    "label": "person",
+    "confidence": 0.136,
+    "location": [
+      2427.91,
+      637.1,
+      2808.45,
+      1325.04
+    ]
+  },
+  {
+    "label": "person",
+    "confidence": 0.126,
+    "location": [
+      1165.48,
+      924.68,
+      1396.91,
+      1595.74
+    ]
+  },
+  {
+    "label": "person",
+    "confidence": 0.158,
+    "location": [
+      1827.65,
+      1144.83,
+      2566.32,
+      2620.1
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.114,
+    "location": [
+      438.43,
+      1531.45,
+      1707.73,
+      2766.08
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.118,
+    "location": [
+      587.99,
+      1587.46,
+      1603.45,
+      1977.07
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.119,
+    "location": [
+      1868.42,
+      1475.13,
+      2486.32,
+      2156.6
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.129,
+    "location": [
+      2095.09,
+      1637.38,
+      2457.79,
+      1959.81
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.248,
+    "location": [
+      560.35,
+      1569.39,
+      1798.5,
+      3029.85
+    ]
+  },
+  {
+    "label": "person",
+    "confidence": 0.148,
+    "location": [
+      1957.68,
+      1175.8,
+      3015.1,
+      2932.96
+    ]
+  },
+  {
+    "label": "table",
+    "confidence": 0.226,
+    "location": [
+      28.74,
+      2942.43,
+      2996.78,
+      4014.0
+    ]
+  }
+]

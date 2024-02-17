@@ -9,6 +9,8 @@ from io import BytesIO
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+import argparse
+
 def visualize(image, boxes, labels):
     # If image is a url
     if image.startswith('http'):
@@ -29,3 +31,18 @@ def visualize(image, boxes, labels):
         ax.text(x, y, label, color='white', fontsize=12, ha='left', va='bottom')
 
     plt.show()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Visualize image with bounding boxes')
+    parser.add_argument('image', type=str, help='Image url or file path')
+    parser.add_argument('boxes', type=str, help='Bounding boxes')
+    parser.add_argument('--labels', type=str, help='Labels for bounding boxes', default=None)
+    args = parser.parse_args()
+
+    boxes = np.array([[float(val) for val in box.split(',')] for box in args.boxes.split(':')])
+    if args.labels is not None:
+        labels = args.labels.split(':')
+    else:
+        labels = [str(i) for i in range(len(boxes))]
+
+    visualize(args.image, boxes, labels)
